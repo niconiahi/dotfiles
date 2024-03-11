@@ -23,7 +23,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_DESCRIBE_STYLE="branch"
 
-PROMPT_COMMAND='__git_ps1 "\[\e[33m\]\u\[\e[0m\]:\[\e[35m\]\W\[\e[0m\]" " \n$ "'
+PROMPT_COMMAND='__git_ps1 "\[\e[33m\]\u\[\e[0m\] -> \[\e[35m\]\W\[\e[0m\]" " \n$ "'
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
