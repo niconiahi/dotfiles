@@ -5,7 +5,24 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 export XDG_CONFIG_HOME="$HOME/.config"
+export HOMEBREW="/opt/homebrew"
 
-if [ -r ~/.bashrc ]; then
-  source ~/.bashrc
+if [ ! -r "$HOME/.fzf.bash" ]; then
+  $(brew --prefix)/opt/fzf/install
+fi
+
+if [ -r "$XDG_CONFIG_HOME/.bashrc" ]; then
+  source "$XDG_CONFIG_HOME/.bashrc"
+fi
+
+if [ -r "$HOME/.fzf.bash" ]; then
+  source "$HOME/.fzf.bash"
+fi
+
+if [ -r "$HOMEBREW/etc/bash_completion.d/git-completion.bash" ]; then
+  . "$HOMEBREW/etc/bash_completion.d/git-completion.bash"
+fi
+
+if [ -r "$HOMEBREW/etc/bash_completion.d/git-prompt.sh" ]; then
+  . "$HOMEBREW/etc/bash_completion.d/git-prompt.sh"
 fi
