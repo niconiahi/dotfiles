@@ -6,14 +6,16 @@ export EDITOR=nvim
 
 export BROWSER="brave"
 
-export REPOS="$HOME/Documents/repos"
 export GITUSER="niconiahi"
-export DOTFILES="$REPOS/dotfiles"
-export BRAIN="$HOME/brain"
+
+export REPOS="$HOME/Documents/repos"
+export DOTFILES="$HOME/Documents/dotfiles"
+export SECOND_BRAIN="$HOME/Documents/second-brain"
 
 export GOBIN="$HOME/.local/bin"
-# export GOPATH="$HOME/.local/share/go"
 export GOPATH="$HOME/go/"
+
+PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -32,6 +34,9 @@ alias v="nvim ."
 
 # tmux
 alias t="tmux"
+alias ta="tmux attach"
+alias tl="tmux ls"
+alias tk="tmux kill-server"
 
 # listing
 alias la="ls -al"
@@ -40,12 +45,14 @@ alias la="ls -al"
 alias gs="git status"
 alias ga="git add ."
 alias gc="git commit"
+alias gp="git push"
 
 # fast editing
 alias bp="nvim $XDG_CONFIG_HOME/.bash_profile"
 alias br="nvim $XDG_CONFIG_HOME/.bashrc"
+alias il="nvim $XDG_CONFIG_HOME/nvim/init.lua"
 
 # fast travelling
-alias conf="cd $XDG_CONFIG_HOME"
-alias down="cd $HOME/Downloads"
-alias repos="cd $HOME/Documents/repos"
+alias dot="cd $DOTFILES"
+alias rs="cd $REPOS"
+alias sb="cd $SECOND_BRAIN"

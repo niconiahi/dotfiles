@@ -26,3 +26,7 @@ fi
 if [ -r "$HOMEBREW/etc/bash_completion.d/git-prompt.sh" ]; then
   . "$HOMEBREW/etc/bash_completion.d/git-prompt.sh"
 fi
+
+if [ -r "$HOMEBREW/opt/asdf/libexec/asdf.sh" ]; then
+  . "$HOMEBREW/opt/asdf/libexec/asdf.sh"
+fi
