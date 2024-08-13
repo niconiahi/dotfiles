@@ -1,5 +1,6 @@
 set -o vi
 bind -x '"\C-l":clear'
+eval "$(fzf --bash)"
 
 export VISUAL=nvim
 export EDITOR=nvim
