@@ -496,7 +496,12 @@ require('lazy').setup {
 
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
+          map('K', function()
+            vim.lsp.buf.hover()
+            vim.defer_fn(function()
+              vim.cmd 'wincmd w' -- This moves the focus to the hover window
+            end, 50)
+          end, 'Hover Documentation')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header
@@ -526,8 +531,9 @@ require('lazy').setup {
       --  By default, Neovim doesn't support everything that is in the LSP Specification.
       --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+      -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -549,7 +555,21 @@ require('lazy').setup {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+
+        tsserver = {
+          on_attach = function(client)
+            -- Disable tsserver diagnostics
+            -- client.server_capabilities.diagnostics = false
+
+            -- Optionally disable other capabilities if needed
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end,
+          -- handlers = {
+          --   -- Disable diagnostics from tsserver
+          --   ['textDocument/publishDiagnostics'] = function() end,
+          -- },
+        },
 
         eslint = {
           filetypes = {
@@ -664,7 +684,10 @@ require('lazy').setup {
       formatters_by_ft = {
         lua = { 'stylua' },
         go = { 'goimports', 'gofmt' },
-        eslint = { 'EslintFixAll' },
+        typescript = { 'EslintFixAll' },
+        javascript = { 'EslintFixAll' },
+        javascriptreact = { 'EslintFixAll' },
+        typescripttreact = { 'EslintFixAll' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
