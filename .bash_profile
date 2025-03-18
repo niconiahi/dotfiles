@@ -30,3 +30,6 @@ fi
 if [ -r "$HOMEBREW/opt/asdf/libexec/asdf.sh" ]; then
   . "$HOMEBREW/opt/asdf/libexec/asdf.sh"
 fi
+. "/Users/niconiahi/.deno/env"
+# Created by `pipx` on 2025-02-11 17:35:03
+export PATH="$PATH:/Users/niconiahi/.local/bin"
