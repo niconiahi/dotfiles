@@ -14,6 +14,15 @@ return {
       javascript = { 'biome' },
       javascriptreact = { 'biome' },
       typescripttreact = { 'biome' },
+      sql = { 'sqlfluff' },
+      css = { 'cssls' },
+    },
+    formatters = {
+      sqlfluff = {
+        command = 'sqlfluff',
+        args = { 'format', '--dialect', 'sqlite', '-' },
+        stdin = true,
+      },
     },
   },
 }

@@ -138,6 +138,8 @@ return { -- LSP Configuration & Plugins
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local nvim_lsp = require 'lspconfig'
     local servers = {
+      templ = {},
+      cssls = {},
       gopls = {},
       ts_ls = {
         on_attach = function(client)
