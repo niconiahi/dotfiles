@@ -155,9 +155,9 @@ return { -- LSP Configuration & Plugins
         -- single_file_support = false,
       },
       jsonls = {},
-      denols = {
-        root_dir = nvim_lsp.util.root_pattern 'deno.json',
-      },
+      -- denols = {
+      --   root_dir = require('lspconfig.util').root_pattern('deno.json', 'deno.jsonc'),
+      -- },
       pyright = {},
       astro = {
         filetypes = {
